@@ -6,7 +6,7 @@ def buscar_ciudad(nombre):
     url = "https://geocoding-api.open-meteo.com/v1/search"
     parametros = {"name": nombre, "count": 1, "language": "es"}
 
-    respuesta = requests.get(url,params=parametros,timeout=10)
+    respuesta = requests.get(url, params=parametros, timeout=10)
     respuesta.raise_for_status()
     datos = respuesta.json()
 
@@ -16,7 +16,7 @@ def buscar_ciudad(nombre):
     ciudad = datos["results"][0]
     return{
         "nombre": ciudad ["name"],
-        "pais": ciudad.get("country",""),
+        "pais": ciudad.get("country", ""),
         "latitud": ciudad["latitude"],
         "longitud": ciudad["longitude"],
 
